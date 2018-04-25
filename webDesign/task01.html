@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>No.1 - 制作一个简单的菜单动画效果</title>
+    <style>
+       /* reset css */
+       html,body,header,
+       nav,a,input,div{
+           margin:0;
+           padding:0;
+           border:0;
+       }
+       :focus{
+           outline: 0;
+       }
+
+       .header-wrap{
+           position: absolute;
+           top:50%;
+           left:50%;
+           transform:translate(-50%,-50%);
+           text-align: center;
+       }
+       .header-menu{
+           margin-bottom:60px;
+           font-size:60px;           
+       }
+       .header-menu .menu-item{
+           position: relative;
+           color:#000;
+           text-decoration:none;          
+       }
+       @keyframes lanuch
+       {
+           0% {width:0;}
+           100% {width:100%}
+       }
+       @keyframes fold{
+           0%{width:100%;}
+           100% {width:0;}
+       }
+       @keyframes changeColor
+       {
+           0% {color:#000;}
+           100%{color:#38ba72}
+       }
+       @keyframes changeColor1
+       {
+           0% {color:#38ba72}
+           100%{color:#000}
+       }
+       .header-menu .lanuch:after{
+           position: absolute;
+           left:50%;
+           bottom:-5px;
+           transform:translateX(-50%);
+           width:100%;
+           height:6px;
+           content:'';
+           background: #38ba72;     
+           animation-name: lanuch;
+           animation-delay: 1;
+           animation-duration: .25s;
+           animation-timing-function: cubic-bezier(0, 0, 1, 1);      
+       }
+       .header-menu .lanuch{
+           color:#38ba72;
+           animation-name: changeColor;
+           animation-delay: 1;
+           animation-duration: .25s;
+           animation-timing-function: cubic-bezier(0, 0, 1, 1);           
+       }
+       .header-menu .fold:after{
+           position: absolute;
+           left:50%;
+           bottom:-5px;
+           transform:translateX(-50%);
+           width:0;
+           height:6px;
+           content:'';
+           background: #38ba72;     
+           animation-name: fold;
+           animation-delay: 1;
+           animation-duration: .25s;
+           animation-timing-function: cubic-bezier(0, 0, 1, 1);      
+       }
+       .header-menu .fold{
+           color:#000;
+           animation-name: changeColor1;
+           animation-delay: 1;
+           animation-duration: .25s;
+           animation-timing-function: cubic-bezier(0, 0, 1, 1);           
+       }
+       .btn{
+           width:400px;
+           height:128px;
+           font-size:60px;
+           color:#fff;
+           background: #38ba72; 
+           border-color: transparent;          
+           border-radius:70px;
+           cursor: pointer;
+           margin-bottom:40px;
+       }
+       .menu1-item{
+            position: relative;
+           color:#000;
+           text-decoration:none; 
+            transition: all .25s cubic-bezier(0, 0, 1, 1); 
+       }
+       .menu1-item:after{
+        position: absolute;
+           left:50%;
+           bottom:-5px;
+           transform:translateX(-50%);
+           width:0;
+           height:6px;
+           content:'';
+           background: #38ba72; 
+           transition: all .25s cubic-bezier(0, 0, 1, 1); 
+       }
+       .menu1-item:hover{
+           color:#38ba72;
+       }
+       .menu1-item:hover:after{
+           width:100%;
+       }
+    </style>
+</head>
+<body>
+<header class="header-wrap">
+    <h2>↓手动切换样式↓</h2>
+    <nav class="header-menu">
+        <a href="javascript:;" class="menu-item">前端学院</a>
+    </nav>
+    <input id="btn" class="btn" type="submit" value="切换样式">
+    <h2>↓菜单鼠标移入样式↓</h2>
+    <nav class="header-menu">
+            <a href="javascript:;" class="menu1-item">前端学院</a>
+    </nav>
+</header>
+<script>
+    var btn = document.getElementById('btn');
+    var arr =document.getElementsByClassName('menu-item');
+    btn.onclick = function(){
+        if(contains(arr[0].classList,'lanuch')){
+            arr[0].classList.remove('lanuch');
+            arr[0].classList.add('fold');
+        }else if(contains(arr[0].classList,'fold')){
+            arr[0].classList.remove('fold');
+            arr[0].classList.add('lanuch');
+        }
+        else{
+            arr[0].classList.add('lanuch');
+        }
+    };
+    function contains(arr, obj) {
+        var i = arr.length;
+        while (i--) {
+            if (arr[i] === obj) {
+            return true;
+            }
+        }
+        return false;
+}
+</script>
+</body>
+</html>
