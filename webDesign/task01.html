@@ -31,49 +31,10 @@
        .header-menu .menu-item{
            position: relative;
            color:#000;
-           text-decoration:none;          
+           text-decoration:none; 
+           transition: all .25s cubic-bezier(0, 0, 1, 1);          
        }
-       @keyframes lanuch
-       {
-           0% {width:0;}
-           100% {width:100%}
-       }
-       @keyframes fold{
-           0%{width:100%;}
-           100% {width:0;}
-       }
-       @keyframes changeColor
-       {
-           0% {color:#000;}
-           100%{color:#38ba72}
-       }
-       @keyframes changeColor1
-       {
-           0% {color:#38ba72}
-           100%{color:#000}
-       }
-       .header-menu .lanuch:after{
-           position: absolute;
-           left:50%;
-           bottom:-5px;
-           transform:translateX(-50%);
-           width:100%;
-           height:6px;
-           content:'';
-           background: #38ba72;     
-           animation-name: lanuch;
-           animation-delay: 1;
-           animation-duration: .25s;
-           animation-timing-function: cubic-bezier(0, 0, 1, 1);      
-       }
-       .header-menu .lanuch{
-           color:#38ba72;
-           animation-name: changeColor;
-           animation-delay: 1;
-           animation-duration: .25s;
-           animation-timing-function: cubic-bezier(0, 0, 1, 1);           
-       }
-       .header-menu .fold:after{
+       .menu-item:after{
            position: absolute;
            left:50%;
            bottom:-5px;
@@ -81,18 +42,14 @@
            width:0;
            height:6px;
            content:'';
-           background: #38ba72;     
-           animation-name: fold;
-           animation-delay: 1;
-           animation-duration: .25s;
-           animation-timing-function: cubic-bezier(0, 0, 1, 1);      
+           background: #38ba72; 
+           transition: all .25s cubic-bezier(0, 0, 1, 1); 
        }
-       .header-menu .fold{
-           color:#000;
-           animation-name: changeColor1;
-           animation-delay: 1;
-           animation-duration: .25s;
-           animation-timing-function: cubic-bezier(0, 0, 1, 1);           
+       .menu-item.active{
+           color:#38ba72; 
+       }
+       .menu-item.active:after{
+            width:100%;
        }
        .btn{
            width:400px;
@@ -146,16 +103,11 @@
     var btn = document.getElementById('btn');
     var arr =document.getElementsByClassName('menu-item');
     btn.onclick = function(){
-        if(contains(arr[0].classList,'lanuch')){
-            arr[0].classList.remove('lanuch');
-            arr[0].classList.add('fold');
-        }else if(contains(arr[0].classList,'fold')){
-            arr[0].classList.remove('fold');
-            arr[0].classList.add('lanuch');
-        }
-        else{
-            arr[0].classList.add('lanuch');
-        }
+        if(contains(arr[0].classList,'active')){
+            arr[0].classList.remove('active');            
+        }else{            
+            arr[0].classList.add('active');
+        }       
     };
     function contains(arr, obj) {
         var i = arr.length;
