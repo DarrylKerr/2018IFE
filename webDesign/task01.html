@@ -33,6 +33,7 @@
            color:#000;
            text-decoration:none; 
            transition: all .25s cubic-bezier(0, 0, 1, 1);          
+<<<<<<< HEAD
        }
        .menu-item:after{
            position: absolute;
@@ -50,6 +51,25 @@
        }
        .menu-item.active:after{
             transform:translateX(-50%) scaleX(1);
+=======
+       }
+       .menu-item:after{
+           position: absolute;
+           left:50%;
+           bottom:-5px;
+           transform:translateX(-50%);
+           width:0;
+           height:6px;
+           content:'';
+           background: #38ba72; 
+           transition: all .25s cubic-bezier(0, 0, 1, 1); 
+       }
+       .menu-item.active{
+           color:#38ba72; 
+       }
+       .menu-item.active:after{
+            width:100%;
+>>>>>>> aa264f0eb18818cb85d45f2de736d10bb91241b2
        }
        .btn{
            width:400px;
