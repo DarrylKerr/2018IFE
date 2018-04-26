@@ -1,0 +1,187 @@
+html{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    background:rgba(0,0,0,.9);
+    -webkit-transform: scale(.9);
+            transform: scale(.9);
+}
+.container{
+    width: 1240px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float:right;
+}
+.pr{
+    position: relative;
+}
+.pa{
+    position: absolute;;
+}
+@-webkit-keyframes lanuch{
+0%{width:0%;}
+}
+@keyframes lanuch{
+0%{width:0%;}
+}
+.sidebar{
+    width:405px;
+    height: 1960px;
+    background:#595757;
+    color:#fff;
+}
+.avator{
+    padding:79px 0 55px;
+    text-align:center;
+}
+.avator .avator-img{
+    display:inline-block;
+    width:214px;
+    height:214px;
+    border:14px solid #fff;
+    border-radius:50%;
+}
+.avator .r-a-tit{
+    font-size: 32px;
+    margin-top:36px;
+}
+.avator .r-a-desc{
+    font-size:14px;
+    margin-top:22px;
+}
+
+
+.basic-info .b-i-list .b-i-item{
+    margin-top:54px;
+}
+.basic-info .b-i-list .b-i-item:first-child{
+    margin-top:0;
+}
+.b-i-list .b-i-item .b-i-tit{
+    width:360px;
+    height:28px;
+    line-height: 28px;
+    position: relative;
+    padding:15px 0;
+    padding-left:19px;
+    margin-left:44px;
+    margin-bottom:32px;
+    background:#00a0e9;
+}
+.b-i-list .b-i-item .b-i-tit:before{
+    display: block;
+    position: absolute;
+    content: '';
+    border-top: 29px solid transparent;
+    border-bottom: 29px solid transparent;
+    border-right: 18px solid #00a0e9;
+    left: -18px;
+    top: 0;
+}
+.b-i-list .b-i-item .b-i-tit:after{
+    display: block;
+    position: absolute;
+    content: '';
+    border-top: 9px solid #0075a9;   
+    border-left: 9px solid #0075a9;
+    border-bottom:9px solid transparent;
+    border-right:9px solid transparent;
+    right: 0;
+    bottom:-18px;
+}
+.b-i-list .b-i-item .b-i-desc{
+    margin-bottom:18px;
+    margin-left:63px;
+}
+.b-i-item .b-i-desc strong{
+    font-weight: 600;
+    display:inline-block;
+    width:84px;
+}
+.b-i-item .b-i-desc .b-i-skills{
+    display: inline-block;
+    background: #b5b5b6;
+    width: 183px;
+    height: 14px;
+}
+.b-i-desc .b-i-skills i{
+    display:block;
+    background:#00a0e9;
+    height:14px;
+    -webkit-animation-name: lanuch;
+            animation-name: lanuch;
+    -webkit-animation-duration:2s;
+            animation-duration:2s;
+}
+.b-i-item h3{
+    margin-left:63px;
+    font-size:16px;
+    margin-bottom:27px;
+}
+
+.r-content{
+    width:743px;
+    height: 1900px;
+    padding:30px 46px;
+    background:#fff;
+    margin-left:405px;
+}
+.r-content .r-c-tit{
+    height:  51px;
+    line-height: 51px;
+    border-bottom:2px solid #000;
+    padding-bottom: 10px;
+}
+.r-content .r-c-tit h2{
+    display:inline-block;
+    margin-left: 18px;
+    vertical-align: top;
+    font-size: 24px;
+    font-weight: 600;
+}
+.r-c-tit .r-c-icon{
+    height:51px;
+    display: inline-block;
+}
+.r-content .r-c-desc{
+    display: block;
+    font-size: 16px;
+    line-height: 32px;
+    padding: 20px 0;
+}
+.job-list{
+    padding:20px 0;
+}
+.job-list .j-l-item{
+    margin-bottom: 46px;
+}
+.job-list .j-l-item dt{
+    margin-bottom:20px;
+    font-size: 16px;
+}
+.j-l-item dt strong{
+    color:#00a0e9;
+    font-weight: 600;
+}
+.honor-list{
+    padding:20px 0;
+    overflow: hidden;
+}
+.honor-list .h-l-item{
+    float:left;
+    width: 240px;
+    margin-right: 100px;
+    margin-bottom: 10px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 18px;
+    padding-left: 24px;
+    background: url(../../images/task02/arrow01.png) no-repeat;
+    background-size: 20px 20px;
+    background-position: 0 7px;
+}

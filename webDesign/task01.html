@@ -38,8 +38,8 @@
            position: absolute;
            left:50%;
            bottom:-5px;
-           transform:translateX(-50%);
-           width:0;
+           transform:translateX(-50%) scaleX(0);
+           width:100%;
            height:6px;
            content:'';
            background: #38ba72; 
@@ -49,7 +49,7 @@
            color:#38ba72; 
        }
        .menu-item.active:after{
-            width:100%;
+            transform:translateX(-50%) scaleX(1);
        }
        .btn{
            width:400px;
@@ -85,6 +85,35 @@
        .menu1-item:hover:after{
            width:100%;
        }
+       .header-menu2{
+           display: inline-block;
+            position: relative;
+           margin-bottom:60px;
+           padding-bottom:10px;
+           font-size:60px;           
+       }
+       .header-menu2 .menu2-item{   
+           display:block;        
+           color:#000;
+           text-decoration:none; 
+           transition: all .25s cubic-bezier(0, 0, 1, 1);          
+       }
+       .header-menu2 .line{
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #38ba72;
+        transition: all .25s cubic-bezier(0, 0, 1, 1);
+       }
+       .header-menu2 .active{
+           color:#38ba72;
+       }
+       .header-menu2 .active + span{
+           width:100%;
+       }
     </style>
 </head>
 <body>
@@ -98,6 +127,12 @@
     <nav class="header-menu">
             <a href="javascript:;" class="menu1-item">前端学院</a>
     </nav>
+    <h2>元素模拟实现</h2>
+    <nav class="header-menu2">
+        <a href="javascript:;" class="menu2-item">前端学院</a>
+        <span class="line"></span>
+</nav>
+<input id="btn1" class="btn" type="submit" value="切换样式">
 </header>
 <script>
     var btn = document.getElementById('btn');
