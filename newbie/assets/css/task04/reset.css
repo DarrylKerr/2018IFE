@@ -1,0 +1,37 @@
+html,body,header,nav,aside,main,footer,ul,li,ol,dl,dt,dd,
+h1,h2,h3,h4,div,span,p,a,input,button,img,i,strong,
+video,audio,section{
+    padding:0;
+    margin:0;
+    border:0;
+}
+:focus{
+    outline: 0;
+}
+ul,li,ol,dl,dt,dd{
+    list-style: none;
+}
+a{
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+}
+address{
+    font-style: inherit;
+    display: inline;
+}
+
+.btn-list{
+    position: absolute;
+    right:10px;
+    top:50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+.btn-list input{
+    width: 60px;
+    height: 32px;
+    background: #59a5fa;
+    color: #fff;
+    cursor: pointer;
+}

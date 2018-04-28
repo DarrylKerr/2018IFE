@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第五天和第六天 三种简历</title>
+    <link rel="stylesheet" href="./assets/css/task04/reset.css">
+    <link id="switch_theme" rel="stylesheet" href="./assets/css/task04/style.brown.css">
+</head>
+<body>
+    <div class="container">
+    <header class="r-header">
+        <h1 class="r-h-tit">简历</h1>
+    </header>
+    <main class="main-content">
+        <ul class="m-c-list">
+            <li class="c-l-item">
+                <h2 class="l-i-tit">基本信息</h2>
+                <div class="l-i-desc">
+                    <dt>
+                        <strong>姓名</strong>
+                        <span>张三</span>
+                    </dt>
+                    <dt>
+                        <strong>性别</strong>
+                        <span>男</span>
+                    </dt>
+                    <dt>
+                        <strong>应聘职位</strong>
+                        <span>Web前端工程师</span>
+                    </dt>
+                </div>                    
+            </li>
+            <li class="c-l-item">
+                <h2 class="l-i-tit">联系方式</h2>
+                <div class="l-i-desc">
+                    <dt>
+                        <strong>手机</strong>
+                        <span><a href="tel:12312341234">12312341234</a></span>
+                    </dt>
+                    <dt>
+                        <strong>Email</strong>
+                        <span><a href="mailto:joinefe@baidu.com">joinefe@baidu.com</a></span>
+                    </dt>
+                    <dt>
+                        <strong>个人主页</strong>
+                        <span><a href="https://github.com">Github</a></span>
+                    </dt>
+                </div> 
+            </li>
+            <li class="c-l-item">
+                <h2 class="l-i-tit">能力描述</h2>
+                <div class="l-i-desc">
+                    <dt class="two-col">
+                        <strong>技术能力</strong>
+                        <span>熟练掌握HTML，CSS，JavaScript</span>
+                    </dt>
+                    <dt class="two-col">
+                        <strong>综合能力</strong>
+                        <span>良好的沟通，主动积极，勤奋努力</span>
+                    </dt>                    
+                </div>
+            </li>
+            <li class="c-l-item">
+                <h2 class="l-i-tit">教育经历</h2>
+                <div class="l-i-desc">
+                    <dt class="two-col">
+                        <strong>本科</strong>
+                        <span>百度前端技术学院小微学院</span>
+                    </dt>
+                    <dt class="two-col">
+                        <strong>研究生</strong>
+                        <span>百度前端技术学院小微学院</span>
+                    </dt>                    
+                </div>
+            </li>
+            <li class="c-l-item">
+                <h2 class="l-i-tit">项目经历</h2>
+                <div class="l-i-desc">
+                    <dt class="two-col">
+                        <strong>小度小度</strong>
+                        <span>作为前端工程师角色参与了ABC组件的开发</span>
+                    </dt>
+                    <dt class="two-col">
+                        <strong>SAN Doc</strong>
+                        <span>作为文档工程师参与了SAN Doc的编写</span>
+                    </dt>                    
+                </div>
+            </li>
+        </ul>
+    </main>    
+</div>
+<div class="btn-list">
+    <input type="button" value="简约风格" onclick="switchTheme('simple')">
+    <input type="button" value="天空蓝" onclick="switchTheme('sky')">
+    <input type="button" value="老爷灰"  onclick="switchTheme('brown')">
+</div>
+
+<script>
+    var sTheme = document.getElementById('switch_theme');
+    function switchTheme(style){
+        sTheme.href = `./assets/css/task04/style.${style}.css`;
+    }
+</script>
+</body>
+</html>

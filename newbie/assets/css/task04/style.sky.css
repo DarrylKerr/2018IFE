@@ -1,0 +1,51 @@
+.container{
+    width: 1000px;
+    margin:0 auto;
+    border:1px solid #ccc;
+    background:#59a5fa;
+    overflow: hidden;
+}
+.r-header{
+    padding:10px 0;
+    float: left;
+    width: 200px;
+}
+.r-header .r-h-tit{
+    font-size:46px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+.main-content{
+    background:#fff;
+    float: right;
+    width: 780px;
+    padding-left: 20px;
+}
+.m-c-list .l-i-tit{
+    font-size:24px;
+    font-weight:600;
+    padding:10px 0;
+}
+.l-i-desc dt{
+    display: inline-block;
+    margin-right:20px;
+}
+.m-c-list .c-l-item{
+    padding-bottom:20px;
+}
+.l-i-desc dt strong,.l-i-desc dt span{
+    display: inline-block;
+}
+.l-i-desc dt strong{
+    padding-right:15px;
+    font-size: 20px;
+    font-weight:600;
+}
+.l-i-desc .two-col{
+    display: block;
+    margin-bottom:20px;
+}
+.l-i-desc .two-col strong{
+    display: block;
+}

@@ -1,0 +1,60 @@
+.container{
+    width:800px;
+    margin:0 auto;    
+    border:1px solid #ccc;
+}
+.r-header{
+    padding:10px 0;
+    background:#858585;
+}
+.r-header .r-h-tit{
+    font-size:46px;
+    font-weight: 600;
+    color: #fff;
+    padding-left: 30px;
+}
+.m-c-list .l-i-tit{
+    font-size: 20px;
+    font-weight:600;
+    padding: 10px 0;
+    display: inline-block;
+    width: 120px;
+    line-height: 75px;
+    background: #ccc;
+    color: #fff;
+    border-bottom: #fff 1px solid;
+    text-align: center;
+}
+.l-i-desc{
+    display:inline-block;
+    width: 660px;
+    float: right;
+    height: 95px;
+    padding-left: 20px;
+    line-height: 96px;
+    border-bottom: 1px solid #ccc;
+}
+.l-i-desc dt{
+    display: inline-block;
+    margin-right:20px;
+}
+.m-c-list{
+}
+.m-c-list .c-l-item{
+    overflow: hidden;
+    height: 96px;
+    line-height: 96px;
+}
+.l-i-desc dt strong,.l-i-desc dt span{
+    height: 20px;
+}
+.l-i-desc dt strong{
+    padding-right:15px;
+    font-size: 20px;
+    font-weight:600;
+}
+.l-i-desc .two-col{
+    display: block;
+    height: 48px;
+    line-height: 48px;
+}
