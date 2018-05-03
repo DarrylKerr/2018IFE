@@ -1,0 +1,39 @@
+#card{
+    width:250px;
+    height:350px;
+    position:relative;
+    perspective:500;
+    -webkit-perspective:500;
+    position:  absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -175px;
+    margin-left: -125px;
+}
+#card div{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;    
+    background:#fff;
+    -webkit-perspective:10000;
+    -webkit-backface-visibility:hidden;
+            backface-visibility:hidden;
+            transition:all 1s;
+    -webkit-transition:all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+}
+#card .back{
+    transform:rotateY(-180deg);
+    -webkit-transform:rotateY(-180deg);
+}
+#card:hover .front{
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+}
+#card:hover .back{
+    transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+}
