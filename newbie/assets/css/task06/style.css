@@ -178,9 +178,7 @@ body{
     height: 49px;
     text-align:center;
 }
-.p-l-icon img{
 
-}
 .p-desc{
     display:inline-block;
     width: 352px;
@@ -307,9 +305,9 @@ body{
     padding-bottom: 80px;
 }
 .comment-list li{
-    -webkit-box-flex:1;
     -ms-flex:1;
-    flex:1;
+    -webkit-box-flex:1;
+            flex:1;
     padding: 0 30px;
 }
 .comm-h-img{
@@ -357,7 +355,7 @@ body{
     right:0;
     top:0;
 }
-.a-l-item:nth-child(2n) ..a-l-desc{
+.a-l-item:nth-child(2n) .a-l-desc{
     left:0;
     top:0;
 }
@@ -549,8 +547,6 @@ body{
     display:inline-block;
     margin-right: 14px;
     vertical-align: top;
-}
-.ct-i-icon img{
 }
 .ct-i-list li address,.ct-i-list li span{
     font-size:16px;

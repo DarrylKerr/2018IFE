@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第十二天到第十五天，复杂页面实现</title>
+    <link rel="stylesheet" href="./assets/css/task07/style.css">
+</head>
+<body>
+    <div class="menu">
+        <div class="primary">
+            <div class="primary-container">
+                <ul class="p-menu-list">
+                    <li><a href="javascript:;"><img src="./assets/images/task07/msg-icon.png" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="./assets/images/task07/rocket-icon.png" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="./assets/images/task07/game-icon.png" alt=""></a></li>                    
+                </ul>
+                <div class="add-app-btn"><img src="./assets/images/task07/add-icon.png"></div>
+                <div class="button-action">
+                    <a href="javascript:;"><img src="./assets/images/task07/grid-icon.png" alt=""></a>
+                    <a href="javascript:;"><img src="./assets/images/task07/setting-icon.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="secondary">
+            <nav class="sec-container">
+                <ul class="sec-menu-list">
+                    <li>
+                        <h3 class="m-group-name">menu</h3>
+                    <div class="menu-l-item">
+                        <dt><a href="">Overview</a></dt>
+                        <dt><a href="">Sales</a><i class="tips">54</i></dt>
+                        <dt><a href="">Your Staff</a></dt>
+                        <dt><a href="">Analytics &amp; Targeting</a></dt>
+                        <dt><a href="">What’s New</a></dt>
+                    </div>
+                    </li>
+                    <li>
+                        <h3 class="m-group-name">Your Products</h3>
+                    <div class="menu-l-item">
+                        <dt class="img-menu"><a href=""><span><img src="./assets/images/task07/book-icon.png"></span>Books</a></dt>
+                        <dt class="img-menu"><a href=""><span><img src="./assets/images/task07/video-icon.png"></span>Tutorials</a></dt>
+                        <dt class="img-menu"><a href=""><span><img src="./assets/images/task07/paint-icon.png"></span>Stocks</a></dt>
+                        <dt class="img-menu"><a href=""><span><img src="./assets/images/task07/chart-icon.png"></span>Infographics</a></dt>                        
+                    </div>
+                    </li>
+                    <li>
+                        <h3 class="m-group-name">Dashboard</h3>
+                    <div class="menu-l-item">
+                        <dt class="active"><a href="">Messages</a><i class="tips">21</i></dt>
+                        <dt><a href="">Connections</a></dt>
+                        <dt><a href="">Integrations</a><i class="notice"></i></dt>
+                        <dt><a href="">Account Settings</a></dt>
+                        <dt><a href="">App Settings</a></dt>
+                    </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="server-capacity">
+                <div class="s-c-desc">
+                    <span class="s-c-item">Monthly Goals</span>
+                    <span class="s-c-num">$580/$3200</span>
+                </div>
+                <div class="percent-bar">
+                    <span style="width:18%"></span>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="chat-wrap">
+        <div class="chat-list">  
+        <h3>Messages</h3>
+        <div class="c-search">
+            <div class="c-s-form">
+                <input  class="c-s-input" type="text" name="chat-search" placeholder="Search...">
+                <input class="c-s-btn" type="submit" value="">
+            </div>            
+        </div>
+        <div class="chat-list-content">
+                <ul>
+                    <li class="active">
+                        <div class="chat-avator">
+                            <img src="./assets/images/task07/avator01.png" alt="" class="avator-img">
+                            <div class="avator-info">
+                                <span class="avator-name">Bessie Berry</span>
+                                <span class="avator-company">Twitter</span>
+                            </div>
+                            <span class="chat-msg-time">3m</span>
+                        </div>
+                        <div class="chat-msg new">
+                            <p>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable...</p>
+                            <span class="new-msg">4</span>
+                        </div>
+                    </li>
+                    <li>
+                            <div class="chat-avator">
+                                <img src="./assets/images/task07/avator02.png" alt="" class="avator-img">
+                                <div class="avator-info">
+                                    <span class="avator-name">Victor Weber</span>
+                                    <span class="avator-company">Adobe</span>
+                                </div>
+                                <span class="chat-msg-time">8m</span>
+                            </div>
+                            <div class="chat-msg">
+                                <p>I shared this on my fb wall a few months back, and I thought I'd share it here again because it's such a great...</p>                               
+                            </div>
+                        </li>
+                        <li>
+                                <div class="chat-avator">
+                                    <img src="./assets/images/task07/avator3.png" alt="" class="avator-img">
+                                    <div class="avator-info">
+                                        <span class="avator-name">Dustin Benson</span>
+                                        <span class="avator-company">Twitter</span>
+                                    </div>
+                                    <span class="chat-msg-time">Yesterday</span>
+                                </div>
+                                <div class="chat-msg">
+                                    <p>If there is anyone who needs an invitation please add yourself in the comments of this post!</p>                                   
+                                </div>
+                            </li>
+                            <li>
+                                    <div class="chat-avator">
+                                        <img src="./assets/images/task07/avator04.png" alt="" class="avator-img">
+                                        <div class="avator-info">
+                                            <span class="avator-name">Jack Mason</span>
+                                            <span class="avator-company">Yahoo</span>
+                                        </div>
+                                        <span class="chat-msg-time">Yesterday</span>
+                                    </div>
+                                    <div class="chat-msg">
+                                        <p>BruteDC is a peer-to-peer movie+tv series sharing and downloading platform which works on intranet inside...</p>                                   
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="chat-avator">
+                                            <img src="./assets/images/task07/avator05.png" alt="" class="avator-img">
+                                            <div class="avator-info">
+                                                <span class="avator-name">Stephen Shelton</span>
+                                                <span class="avator-company">Snapchat</span>
+                                            </div>
+                                            <span class="chat-msg-time">13 Jun</span>
+                                        </div>
+                                        <div class="chat-msg">
+                                            <p>Yes, p2p traffic is often filtered (QoSed). Although i do use BT on O2 wires, and in good days dl speed...</p>                                   
+                                        </div>
+                                    </li>
+                                    <li>
+                                            <div class="chat-avator">
+                                                <img src="./assets/images/task07/avator06.png" alt="" class="avator-img">
+                                                <div class="avator-info">
+                                                    <span class="avator-name">Sally Willis</span>
+                                                    <span class="avator-company">Twitter</span>
+                                                </div>
+                                                <span class="chat-msg-time">12 Jun</span>
+                                            </div>
+                                            <div class="chat-msg">
+                                                <p>Yes, it's O2: 'internet extreme', which is no longer offered.</p>                                   
+                                            </div>
+                                        </li>
+                                        <li>
+                                                <div class="chat-avator">
+                                                    <img src="./assets/images/task07/avator07.png" alt="" class="avator-img">
+                                                    <div class="avator-info">
+                                                        <span class="avator-name">Robert Patton</span>
+                                                        <span class="avator-company">A Team</span>
+                                                    </div>
+                                                    <span class="chat-msg-time">9 Jun</span>
+                                                </div>
+                                                <div class="chat-msg">
+                                                    <p>I change my service from this 4Mb plan to their much cheaper 8Mb plan, my speed will dramatically decrease.</p>                                   
+                                                </div>
+                                            </li>
+                </ul>
+            </div>
+        </div>
+        <div class="chat-content">
+            <div class="profile">
+                <div class="profile-avator">
+                    <div class="p-a-img">
+                            <img src="./assets/images/task07/avator-admin.png" alt="">
+                            <i class="status-online"></i>
+                    </div>                    
+                    <div class="p-a-info">
+                        <span class="p-a-usename">Jordan J.</span>
+                        <span class="p-a-role">Administrator</span>
+                    </div>
+                </div>
+                <i class="dropdown"></i>
+            </div>
+            <div class="chat-bar">
+                <h3 class="cur-chat-user">Bessie Berry</h3>
+                <div class="c-b-tool">
+                    <div class="editor-tool">
+                        <span class="add-user"></span>
+                        <span class="upload"></span>
+                        <span class="del-msg"></span>
+                    </div>
+                    <div class="page-info">
+                        <span class="cur-page">1</span>
+                        of
+                        <span class="total-page">28</span>
+                    </div>
+                    <div class="page-btn">
+                        <span class="prev"></span>
+                        <span class="next"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-main">
+                <div class="read-msg">
+                    <ul>
+                        <li>
+                            <div class="msg-col">
+                            <div class="r-m-avator">
+                                <img src="./assets/images/task07/avator01.png" alt="">
+                            </div>
+                            <div class="r-m-desc">
+                                <div class="r-m-from"><span class="m-f-name">Bessie Berry</span><span class="m-f-time">8:31 AM</span></div>
+                                <p class="m-f-content">Hi guys Ive got the O2 package and have really slow internet. A speed check online said i can get 3mbps but it seems more like 0.5 these days, just freezing and taking ages to open pages and open audio files for example. I have decided to switch to the UPC package which offers 10mbps but do you think i will get it?</p>
+                            </div>
+                        </div>
+                        <div class="msg-col">
+                            <div class="r-m-avator">
+                                <img src="./assets/images/task07/avator-admin.png" alt="">
+                            </div>
+                            <div class="r-m-desc">
+                                <div class="r-m-from"><span class="m-f-name">Jordan Jackson</span><span class="m-f-time">8:31 AM</span></div>
+                                <p class="m-f-content">I have internet for 9 month and nevere could benefit from the full capacity of 5Mbit/s as it is filtered by O2 when it detect traffic on public p2p sharing in my situation all my internet speed slows to 512Kbit/s. I never had 400KB/s on when downloading from p2p public servers like torrent emule etc. I downoad with 500KB/s from private trakers instead. So conlcusion O2 block trafic on p2p connections. I have made hundreds of test in Italy and Sweden and Romania with the same file to doanload with the same setting and same antivirus and just needed to open ports in firewall and forward same ports and the speed was at full capacity in 1 minute. here in 9 month never had this luck.</p>
+                            </div>
+                        </div>
+                        </li>
+                        <li>
+                            <div class="chat-date">
+                                    <h3>Tuesday</h3>
+                            </div>                                
+                                <div class="msg-col">
+                                <div class="r-m-avator">
+                                    <img src="./assets/images/task07/avator01.png" alt="">
+                                </div>
+                                <div class="r-m-desc">
+                                    <div class="r-m-from"><span class="m-f-name">Bessie Berry</span><span class="m-f-time">8:31 AM</span></div>
+                                    <p class="m-f-content">Funny comparison. so would the proper antivirus not slow down the internet as much or do you mean a freebie doenst protect the computer from viruses?</p>
+                                </div>
+                            </div>
+                            <div class="msg-col">                                
+                                <div class="r-m-avator">
+                                    <img src="./assets/images/task07/avator-admin.png" alt="">
+                                </div>
+                                <div class="r-m-desc">
+                                    <div class="r-m-from"><span class="m-f-name">Jordan Jackson</span><span class="m-f-time">8:31 AM</span></div>
+                                    <p class="m-f-content">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2, and haven't had any problems. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. I max out at about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a noisy telephone line, not because I'm being throttled. When my uploads go over 25 KB/sec (note, bytes, not bits), my download speed suffers. This is expected, as downloads require upload bandwidth as well. </p>
+                                    <div class="c-img-list">
+                                        
+                                        <div class="c-list-item"><img src="./assets/images/task07/msg-img01.png" alt=""></div>                          
+                                        <div class="c-list-item"><img src="./assets/images/task07/msg-img02.png" alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </li>
+                    </ul>
+                </div>
+                <div class="new-msg-wrap">
+                        <div class="chat-date">
+                                <h3>New Messages</h3>
+                        </div> 
+                        <div class="msg-col">
+                                <div class="r-m-avator">
+                                    <img src="./assets/images/task07/avator01.png" alt="">
+                                </div>
+                                <div class="r-m-desc">
+                                    <div class="r-m-from"><span class="m-f-name">Bessie Berry</span><span class="m-f-time">8:31 AM</span></div>
+                                    <p class="m-f-content">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. </p>
+                                </div>
+                            </div>
+                </div>
+                <div class="send-msg">
+                    <div class="add-btn"></div>
+                    <div class="s-m-input">
+                        <input type="text" value="Well, kinda both :) but more of that second option, i`ve seen many systems infected and crawling with">
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>
