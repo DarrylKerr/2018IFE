@@ -4,7 +4,8 @@
     <meta charset="UTF-8">    
     <title>IFE ECMAScript</title>
 </head>
-<body>        
+<body>
+    <h2>简单的计算器:</h2>        
     <input id="first-number" type="number" value="0" placeholder="第一个数字">
     <input id="second-number" type="number" value="0" placeholder="第二个数字">
     <button id="add-btn">加</button>
@@ -12,7 +13,18 @@
     <button id="times-btn">乘</button>
     <button id="divide-btn">除</button>
     <p id="result">运算结果</p>
+    <h2>二进制计算器:</h2>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result1">运算结果</p>
+    <h2>数字游戏:</h2>
+    <button id="start-btn" onclick="aSimpleNUmGame()">开始游戏</button>
+    <h2>打印九九乘法表:</h2>
+    <button onclick="printMultTabOnConsole()">在控制台打印</button>
+    <button onclick="printMultTab()">在页面打印</button>
+    <div id="printMultTable"></div>
     <script>
+        //简单的计算器
         function compute(type){
                 var value1 = document.getElementById('first-number').value;
                 var value2 = document.getElementById('second-number').value;
@@ -23,13 +35,19 @@
                           var value = value1 + value2 ;
                             break;
                 case 'sub' :
-                          var value = value1 - value2 ;
+                            var value = value1 - value2 ;
                             break;
                 case 'mult':
                            var value = value1 * value2;
                             break;
                 default    :
-                            var value = value1 / value2;                           
+                            if(value2 != 0){
+                                var value = value1 / value2; 
+                            }else{
+                                console.log('进行除法运算除数不能为0');
+                                var value = '除数不能为0，请重新输入！';
+                            }
+                                                      
                             
             }
             return value;
@@ -50,7 +68,7 @@
         add.onclick = function(){
             printResult(compute('add'));
         };
-       sub.onclick = function(){
+        sub.onclick = function(){
             printResult(compute('sub'));
         };
         mult.onclick = function(){
@@ -59,6 +77,86 @@
         div.onclick = function(){            
             printResult(compute('div'));
         };
+
+        //二进制计算器
+        function toBinary(str){
+            var value = parseInt(str);
+            var decNumber = document.getElementById('dec-number');
+            var result1 = document.getElementById('result1');
+            if(value < 0){
+                alert('请输入一个非负整数！');
+                decNumber.value = '';
+                decNumber.focus();
+            }
+            else{
+                result1.innerHTML = `运算结果${value.toString(2)}`;
+            }
+        }
+        var dec_btn = document.getElementById('trans-btn');
+        dec_btn.addEventListener('click',function(){
+            var value = document.getElementById('dec-number').value;
+            toBinary(value);
+        },false);
+
+        //小游戏
+        function aSimpleNUmGame(){
+            for(var i =1;i <101;i++){
+                if(i.toString().indexOf('3') >-1 || i % 3 == 0){
+                    console.log('PA');
+                }
+                else{
+                    console.log(i);
+                }
+            }
+        }
+
+    //九九乘法表
+    //控制台打印
+    function printMultTabOnConsole(){
+        for(var i = 1; i < 10 ;i++){
+            var str = '';
+            for(var k = 1; k < i+1; k++){
+                str += `${k} x ${i} = ${i * k} `;
+            }
+            console.log(str);
+        }
+        alert('请打开控制台查看!');
+    }
+
+    //表格打印
+    function printMultTab(){
+        var table = document.createElement('table');
+        var tabCon = document.getElementById('printMultTable');
+        for(var i = 1; i < 10 ; i++){
+            var trNode = table.insertRow();
+            for(var k = 1; k < i+1; k++){
+                var tdNode=trNode.insertCell();
+                tdNode.innerHTML = `${k} x ${i} = ${i * k}`;
+            }            
+        }
+        tabCon.appendChild(table);
+    }
+    function sayHi(){
+        var now = new Date();
+        var hour = now.getHours();
+        switch(true){
+            case hour <=5 || hour >=19 
+                    :
+                    alert('晚上好!');
+                    break;
+            case hour > 5 && hour < 12
+                    :
+                    alert('早上好');
+                    break;
+            default
+                    :
+                    alert('中午好');
+
+        }
+    }
+    window.onload = function(){
+        sayHi();
+    }
     </script>
 </body>
 </html>
