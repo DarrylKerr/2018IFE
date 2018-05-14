@@ -148,9 +148,13 @@
                     :
                     alert('早上好');
                     break;
-            default
+            case hour >= 12 && hour < 13
                     :
                     alert('中午好');
+                    break;
+            default
+                    :
+                    alert('下午好');
 
         }
     }
