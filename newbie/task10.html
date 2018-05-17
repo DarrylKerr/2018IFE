@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>day10:让你和页面对话</title>
+    <style>
+            select {
+                display: none;
+            }
+            .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        .erick{
+            width: 480px;
+            height: 480px;
+            background-image: url(./assets/images/task10/erik_ce204002.jpg);
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <h2>监听键盘事件</h2>
+    <input id="name" type="text">    
+    <button id="submit-btn">Submit</button>
+    <h2>操作DOM样式</h2>
+    <label>
+            <input id="school" name="status" type="radio">
+            School
+        </label>
+        <label>
+            <input id="company" name="status" type="radio">
+            Company
+        </label>
+    
+        <select id="school-select">        
+            <option>北京邮电大学</option>
+            <option>黑龙江大学</option>
+            <option>华中科技大学</option>
+        </select>
+    
+        <select id="company-select">        
+            <option>百度</option>
+            <option>爱奇艺</option>        
+        </select>
+        <h2>事件委托</h2>
+        <ul class="palette">
+                <li style="background-color:crimson"></li>
+                <li style="background-color:bisque"></li>
+                <li style="background-color:blueviolet"></li>
+                <li style="background-color:coral"></li>
+                <li style="background-color:chartreuse"></li>
+                <li style="background-color:darkolivegreen"></li>
+                <li style="background-color:cyan"></li>
+                <li style="background-color:#194738"></li>        
+            </ul>        
+            <p class="color-picker"></p>
+            <h2>淡入淡出动画</h2>
+            <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+            <button id="fade-btn">淡出</button>
+            <h2>人物动画</h2>
+            <div id="erick" class="erick"></div>
+    <script>
+        //控制台打印input输入内容
+        var  sub_btn = document.getElementById('submit-btn');
+        var nameInput = document.getElementById('name');
+        sub_btn.addEventListener('click',function(){
+            console.log(nameInput.value);
+        },false);
+        nameInput.addEventListener('keydown',function(event){
+            switch(event.keyCode){
+                case 13 :
+                          console.log(nameInput.value);
+                          break;
+                case 27 :
+                          nameInput.value = '';
+                          nameInput.blur();
+                          break;
+            }
+        },false);
+
+        //监听radio状态
+        function getSection(sectionId){
+            return document.querySelector('#' + sectionId);
+        }
+        var schoolBtn = getSection('school');
+        var companyBtn = getSection('company');
+        var schSlt = getSection('school-select');
+        var cpySlt = getSection('company-select');
+        schoolBtn.addEventListener('change',function(){
+            cpySlt.style.display = 'none';
+            schSlt.style.display = 'block';
+        },false);
+        companyBtn.addEventListener('change',function(){
+            schSlt.style.display = 'none';
+            cpySlt.style.display = 'block';
+        },false);
+
+        //读取list颜色(事件委托)
+        var palette = document.getElementsByClassName('palette')[0];
+        palette.addEventListener('click',function(event){
+            var event = event || window.event;
+            var target = event.target;            
+            if(target.nodeName.toLowerCase() == 'li'){
+                var bgColor = target.style.backgroundColor;
+                var p = document.getElementsByClassName("color-picker")[0];
+                p.innerHTML = bgColor;
+                p.style.color = bgColor;
+            }
+        },false);
+        //淡入淡出动画
+        function fadeOut(sectionId){
+            var sectionId = document.querySelector('#' + sectionId);
+            var fadeBtn = document.querySelector('#fade-btn');
+            fadeBtn.disabled = true;
+            for(let i = 0;i < 11 ; i++){               
+                setTimeout(function(){
+                        sectionId.style.opacity = (1 - 0.1 * i);
+                    },80 * i);   
+            }
+            fadeBtn.disabled = false;
+            fadeBtn.innerText = '淡入';
+        }
+        function fadeIn(sectionId){
+            var sectionId = document.querySelector('#' + sectionId);
+            var fadeBtn = document.querySelector('#fade-btn');            
+            for(let i = 0;i < 11 ; i++){                
+                setTimeout(function(){
+                        sectionId.style.opacity =  0.1 * i;
+                    },80 * i);   
+            }            
+        }
+        var fadeBtn = document.querySelector('#fade-btn');
+        fadeBtn.addEventListener('click',function(event){
+                if(fadeBtn.innerText == '淡入'){               
+                    fadeIn('fade-obj'); 
+                }
+                else{                    
+                    fadeOut('fade-obj');                   
+                }
+        },false);
+
+        //动画
+        function faceSmile(){
+            var face_obj = document.querySelector('#erick');
+            for(var i = 0;i < 33 ; i++){ 
+                if(i < 17){
+                    (function(i){
+                    setTimeout(function(){
+                        face_obj.style['background-position-y'] = (-480 * i) + 'px';
+                    },80*i);
+                })(i)  
+                }
+                else{
+                    (function(i){
+                    setTimeout(function(){
+                        face_obj.style['background-position-y'] = (-480 * (32-i)) + 'px';
+                    },80*i);
+                })(i) 
+                }
+            }          
+        }
+        faceSmile();
+        setInterval('faceSmile()',2560);
+    </script>
+</body>
+</html>
