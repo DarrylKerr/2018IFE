@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task11:JavaScript里面的居民们</title>
+</head>
+<body>
+    <div>
+        <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+        <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+    </div>
+    <div>
+        <button onclick="checkCurNum()">判断当前选中的输入框输入内容是否为数字</button>
+        <button onclick="btnRound()">把 A 四舍五入为 B 个小数位数的数字</button>
+        <button onclick="getAbs()">当前选中数字的绝对值</button>
+        <button onclick="getMathCeil()">对当前选中的数字进行上舍入</button>
+        <button onclick="getMathFloor()">对当前选中的数字进行下舍入</button>
+        <button onclick="getMathRound()">把当前选中的数字四舍五入为最接近的整数</button>
+        <button onclick="getMathMax()">返回 A 和 B 中的最高值</button>
+        <button onclick='getMathMin()'>返回 A 和 B 中的最低值</button>        
+    </div>
+    <p id="result"></p>
+    <script>
+        function isNum(num){
+            var reg = /^(-)?\d+(\.\d+)?$/;
+            if(reg.test(num)){
+                return true;
+            }
+            return false;
+        }
+        function checkCurNum(){
+            var radio_a = document.querySelector('#radio-a');
+            var radio_b = document.querySelector('#radio-b');
+            var num_a = document.querySelector('#num-a').value;
+            var num_b = document.querySelector('#num-b').value;
+            if(radio_a.checked){
+               alert(isNum(num_a) ? true : false );
+            }
+            else if(radio_b.checked){
+                alert(isNum(num_b) ? true : false );
+            }
+            else{
+                alert('未选中任何数字');
+            }
+        }
+        function toRound( a , b ){
+            if(!isNum(a) || !isNum(b)){
+                alert('输入类型不合法，必须是数字!');
+            }
+            else if(b.indexOf('.') > -1 || b < 0){
+                alert('B必须为整数，且不能小于0');
+            }
+            else{
+                a = parseFloat(a);
+                b = parseFloat(b);
+                alert(a.toFixed(b));
+            }
+        }
+        function btnRound(){
+            var num_a = document.querySelector('#num-a').value;
+            var num_b = document.querySelector('#num-b').value;
+            toRound(num_a , num_b);
+        }
+
+        function getAbs(){
+            var radio_a = document.querySelector('#radio-a');
+            var radio_b = document.querySelector('#radio-b');
+            var num_a = document.querySelector('#num-a').value;
+            var num_b = document.querySelector('#num-b').value;
+            if(radio_a.checked){
+               alert(isNum(num_a) ? Math.abs(parseFloat(num_a)) : '请输入数字!' );
+            }
+            else if(radio_b.checked){
+                alert(isNum(num_b) ? Math.abs(parseFloat(num_b)) : '请输入数字!' );
+            }
+            else{
+                alert('未选中任何数字');
+            }
+        }
+
+        function getMathCeil(){
+            var radio_a = document.querySelector('#radio-a');
+            var radio_b = document.querySelector('#radio-b');
+            var num_a = document.querySelector('#num-a').value;
+            var num_b = document.querySelector('#num-b').value;
+            if(radio_a.checked){
+               alert(isNum(num_a) ? Math.ceil(parseFloat(num_a)) : '请输入数字!' );
+            }
+            else if(radio_b.checked){
+                alert(isNum(num_b) ? Math.ceil(parseFloat(num_b)) : '请输入数字!' );
+            }
+            else{
+                alert('未选中任何数字');
+            }
+        }
+        function getMathFloor(){
+            var radio_a = document.querySelector('#radio-a');
+            var radio_b = document.querySelector('#radio-b');
+            var num_a = document.querySelector('#num-a').value;
+            var num_b = document.querySelector('#num-b').value;
+            if(radio_a.checked){
+               alert(isNum(num_a) ? Math.floor(parseFloat(num_a)) : '请输入数字!' );
+            }
+            else if(radio_b.checked){
+                alert(isNum(num_b) ? Math.floor(parseFloat(num_b)) : '请输入数字!' );
+            }
+            else{
+                alert('未选中任何数字');
+            }
+        }
+        function getMathRound(){
+            var radio_a = document.querySelector('#radio-a');
+            var radio_b = document.querySelector('#radio-b');
+            var num_a = document.querySelector('#num-a').value;
+            var num_b = document.querySelector('#num-b').value;
+            if(radio_a.checked){
+               alert(isNum(num_a) ? Math.round(parseFloat(num_a)) : '请输入数字!' );
+            }
+            else if(radio_b.checked){
+                alert(isNum(num_b) ? Math.round(parseFloat(num_b)) : '请输入数字!' );
+            }
+            else{
+                alert('未选中任何数字');
+            }
+        }
+        function getMathMin(){
+            var a = document.querySelector('#num-a').value;
+            var b = document.querySelector('#num-b').value;
+            if(!isNum(a) || !isNum(b)){
+                alert('输入类型不合法，必须是数字!');
+            }            
+            else{
+                a = parseFloat(a);
+                b = parseFloat(b);
+                alert(Math.min(a,b));
+            }
+        }
+        function getMathMax(){
+            var a = document.querySelector('#num-a').value;
+            var b = document.querySelector('#num-b').value;
+            if(!isNum(a) || !isNum(b)){
+                alert('输入类型不合法，必须是数字!');
+            }            
+            else{
+                a = parseFloat(a);
+                b = parseFloat(b);
+                alert(Math.max(a,b));
+            }
+        }
+    </script>
+</body>
+</html>
