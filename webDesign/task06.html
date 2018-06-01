@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>利用 CSS animation 制作一个炫酷的 Slider</title>
+    <style>
+        html,body,div,ul,li,img{
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        ul,li{
+            list-style: none;           
+        }
+        @keyframes leftIn{
+            0%    {left:-500px}
+            100%  {left:0}
+        }
+        @keyframes topIn{
+            0%   {top:350px}
+            100% {top:0}
+        }
+        @keyframes scaleBIn{
+            0%    { transform:scale(0.1) }
+            100%  { transform:scale(1) }
+        }
+        @keyframes scaleSIn{
+            0%    { transform:scale(2) }
+            100%  { transform:scale(1) }
+        }
+        @keyframes scaleBInRotate{
+            0%    { transform:scale(0.1) rotate(-360deg) }
+            100%  { transform:scale(1) rotate(0)  }
+        }
+        .slider-wrap{
+            width: 1024px;
+            margin:0 auto;
+            position: relative; 
+            overflow: hidden;
+        }
+        .slider-container{          
+            height:768px;       
+        }
+        .slider-item{
+            width:1024px;
+            height: 768px;
+            position:absolute;
+            top:0;
+            left:0;
+            opacity:0;
+        }
+        .slider-btn ul{
+            display:flex;
+            margin-top:20px;
+            background: rgba(0,0,0,0.6);
+        }
+        .slider-btn{
+            position:absolute;
+            width:100%;
+            left:0;
+            bottom:20px;
+        }
+        .slider-btn ul li{
+            flex:1;
+            margin:0 5px;
+            opacity:.6 ;
+        }
+        .slider-btn ul li.active{
+            opacity: 1;
+        }
+        .slider-btn ul li img{
+            width:100%;
+            display:block;
+        }
+        .slider-item.active{
+            opacity:1;
+        }
+        .slider-container li:nth-child(1).active{
+            animation: leftIn .5s ease-out;
+        }
+        .slider-container li:nth-child(2).active{
+            animation: topIn .5s ease-out;
+        }
+        .slider-container li:nth-child(3).active{
+            animation: scaleBIn 1s ease-in;
+        }
+        .slider-container li:nth-child(4).active{
+            animation: scaleSIn 1s ease-out;
+        }
+        .slider-container li:nth-child(5).active{
+            animation: scaleBInRotate 1s ease-in-out;
+        }
+    </style>
+</head>
+<body><div class="slider-wrap">
+    <div class="slider-container">
+        <ul>
+            <li class="slider-item" style="background:url(./assets/images/task06/01.jpg)"></li>
+            <li class="slider-item" style="background:url(./assets/images/task06/02.jpg)"></li>
+            <li class="slider-item" style="background:url(./assets/images/task06/03.jpg)"></li>
+            <li class="slider-item" style="background:url(./assets/images/task06/04.jpg)"></li>        
+            <li class="slider-item active" style="background:url(./assets/images/task06/08.jpg)"></li>
+        </ul>
+    </div>
+    <div id="slider-btn" class="slider-btn">
+        <ul>
+            <li><img src="./assets/images/task06/01.jpg" alt=""></li>
+            <li><img src="./assets/images/task06/02.jpg" alt=""></li>
+            <li class="active"><img src="./assets/images/task06/03.jpg" alt=""></li>
+            <li><img src="./assets/images/task06/04.jpg" alt=""></li>     
+            <li><img src="./assets/images/task06/08.jpg" alt=""></li>
+        </ul>
+    </div>
+</div>
+<script>
+    var slider_btn = document.querySelector('#slider-btn');
+    var btnList = slider_btn.querySelectorAll('img');
+    slider_btn.addEventListener('click',function(event){
+        if(event.target.nodeName.toLowerCase() == 'img'){
+            event.target.parentNode.className = 'active';
+        }
+    },false);
+</script>
+</body>
+</html>

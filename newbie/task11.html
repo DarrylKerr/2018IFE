@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>task11:JavaScript里面的居民们</title>
+    <style>
+        button{
+            height: 36px;
+            font-size: 14px;
+            color: #fff;
+            background: #38ba72;
+            border-color: transparent;
+            cursor: pointer;
+            border-radius: 28px;
+            margin-bottom: 40px;
+            padding: 5px;
+        }
+        :focus{
+            outline: 0;
+        }
+    </style>
 </head>
 <body>
     <div>
@@ -36,16 +52,16 @@
     <div>
         <button onclick="getStrLength()">获取当前选中输入的内容长度</button>
         <button onclick="getThirdStr()">当前选中输入中的第3个字符</button>
-        <button>把两个输入框的文字连接在一起输出（concat）</button>
-        <button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
-        <button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+        <button onclick="concatStr()">把两个输入框的文字连接在一起输出（concat）</button>
+        <button onclick="getIndexOfB()">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+        <button onclick="getLastIndexOfA()">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
         <button>使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
         <button>当前选中输入框的行数</button>
         <button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
-        <button>把所选输入框中的内容全部转为大写</button>
-        <button>把所选输入框中的内容全部转为小写</button>
-        <button>把所选输入框中内容的半角空格全部去除</button>
-        <button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+        <button onclick="toUpperCase()">把所选输入框中的内容全部转为大写</button>
+        <button onclick="toLowerCase()">把所选输入框中的内容全部转为小写</button>
+        <button onclick="delSpace()">把所选输入框中内容的半角空格全部去除</button>
+        <button onclick="toAnother()"> 把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
     </div>    
     <p id="result"></p>
     <script>
@@ -209,6 +225,237 @@
                 alert('未选中任何字符串或字符串为空');
             }
         }
-    </script>
+        function concatStr(){
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(str_a == '' && str_b == ''){
+                alert('请至少输入一个字符串');
+            } else{
+                result.innerText = `${str_a.concat(str_b)}`;  
+            }                     
+        }
+        function toUpperCase(){
+            var radio_c = document.querySelector('#radio-c');
+            var radio_d = document.querySelector('#radio-d');
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(radio_c.checked && str_a != ''){
+              result.innerText = `转换大写字母结果为:${str_a.toUpperCase()}`;
+            }
+            else if(radio_d.checked && str_b != ''){
+                result.innerText = `转换大写字母结果为:${str_b.toUpperCase()}`;
+            }
+            else{
+                alert('未选中任何字符串或字符串为空');
+            }
+        }
+        function toLowerCase(){
+            var radio_c = document.querySelector('#radio-c');
+            var radio_d = document.querySelector('#radio-d');
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(radio_c.checked && str_a != ''){
+              result.innerText = `转换小写字母结果为:${str_a.toLowerCase()}`;
+            }
+            else if(radio_d.checked && str_b != ''){
+                result.innerText = `转换小写字母结果为:${str_b.toLowerCase()}`;
+            }
+            else{
+                alert('未选中任何字符串或字符串为空');
+            }
+        }
+        function delSpace(){
+            var radio_c = document.querySelector('#radio-c');
+            var radio_d = document.querySelector('#radio-d');
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(radio_c.checked && str_a != ''){
+              result.innerText = `去掉半角空格结果为:${str_a.replace(/\s+/g,'')}`;
+            }
+            else if(radio_d.checked && str_b != ''){
+                result.innerText = `去掉半角空格结果为:${str_b.replace(/\s+/g,'')}`;
+            }
+            else{
+                alert('未选中任何字符串或字符串为空');
+            }
+        }
+        function toAnother(){
+            var radio_c = document.querySelector('#radio-c');
+            var radio_d = document.querySelector('#radio-d');
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(radio_c.checked && str_a != ''){
+              result.innerText = `去掉半角空格结果为:${str_a.replace(/a/g,str_b)}`;
+            }
+            else if(radio_d.checked && str_b != ''){
+                result.innerText = `去掉半角空格结果为:${str_b.replace(/a/g,str_a)}`;
+            }
+            else{
+                alert('未选中任何字符串或字符串为空');
+            }
+        }
+        function getLastIndexOfA(){
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(str_a != '' && str_b != ''){
+                result.innerText = `A在B中最后一次出现的位置为：${str_b.lastIndexOf(str_a)}`;
+            }else{
+                alert('字符串不能为空！');
+            }
+        }
+        function getIndexOfB(){
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var result = document.querySelector('#result');
+            if(str_a != '' && str_b != ''){
+                result.innerText = `B在A中第一次出现的位置为：${str_a.indexOf(str_b)}`;
+            }else{
+                alert('字符串不能为空！');
+            }
+        }
+        function getSliceStr(){
+            var str_a = document.querySelector('#str-a').value;
+            var str_b = document.querySelector('#str-b').value;
+            var num_c = document.querySelector('#num-c').value;
+            var num_d = document.querySelector('#num-d').value;
+            var result = document.querySelector('#result');
+        }
+
+        function diyTrim(str) {
+    var result = "";
+
+    // do something
+    result = str.replace(/(^\s*)|(\s*$)/g, "");
+
+    return result
+}
+
+// 测试用例
+console.log(diyTrim(' a f b    ')); // ->a f b
+console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+console.log(diyTrim('1    ')); // ->1
+console.log(diyTrim('　　f')); // ->f
+console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+console.log(diyTrim(' ')); // ->
+console.log(diyTrim('　')); // ->
+console.log(diyTrim('')); // ->
+
+/*
+去掉字符串str中，连续重复的地方
+*/
+function removeRepetition(str) {
+    var result = "";
+
+    // do something
+
+    return result;
+}
+
+// 测试用例
+console.log(removeRepetition("aaa")); // ->a
+console.log(removeRepetition("abbba")); // ->aba
+console.log(removeRepetition("aabbaabb")); // ->abab
+console.log(removeRepetition("")); // ->
+console.log(removeRepetition("abc")); // ->abc
+
+var tree = {
+    "id": 0,
+    "name": "root",
+    "left": {
+        "id": 1,
+        "name": "Simon",
+        "left": {
+            "id": 3,
+            "name": "Carl",
+            "left": {
+                "id": 7,
+                "name": "Lee",
+                "left": {
+                    "id": 11,
+                    "name": "Fate"
+                }
+            },
+            "right": {
+                "id": 8,
+                "name": "Annie",
+                "left": {
+                    "id": 12,
+                    "name": "Saber"
+                }
+            }
+        },
+        "right": {
+            "id": 4,
+            "name": "Tony",
+            "left": {
+                "id": 9,
+                "name": "Candy"
+            }
+        }
+    },
+    "right": {
+        "id": 2,
+        "name": "right",
+        "left": {
+            "id": 5,
+            "name": "Carl",
+        },
+        "right": {
+            "id": 6,
+            "name": "Carl",
+            "right": {
+                "id": 10,
+                "name": "Kai"
+            }        
+        }
+    }
+}
+
+// 便利对象属性
+function process(key,value){
+    var a = [];
+    a[key] = value;
+    return a;
+}
+function traverse(o,f){
+    for(let i in o){
+        f.appley(this,[i,o[i]]);
+        if(typeof(o[i]) == 'object'){
+            traverse(o[i],f);
+        }
+    }
+}
+
+// 假设id和name均不会重复，根据输入name找到对应的id
+function findIdByName(name) {
+
+}
+
+// 假设id和name均不会重复，根据输入id找到对应的name
+function findNameById(id) {
+
+}
+
+// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+function getListWithDLR() {
+
+}
+
+// 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+function getListWithLDR() {
+
+}
+
+// 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+function getListWithLRD() {
+
+}
+</script>
 </body>
 </html>

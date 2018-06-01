@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒数开始 滴答滴 滴答滴</title>
+    <style>
+        button{
+            display:block;
+        }
+    </style>
+</head>
+<body>    
+    <p id="cur-time"></p>
+    <div id="setClock">
+    <select id="year-select">
+        <option value="2018">2018</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2032">2032</option>
+    </select>
+    
+    <select id="month-select">
+        <option value="5">5</option>
+        <option value="2">2</option>
+        <option value="12">12</option>
+    </select>
+    
+    <select id="day-select">
+        <option value="31">31</option>
+        <option value="2">2</option> 
+        <option value="31">31</option>
+    </select>
+    
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>  
+        <option value="23">23</option>
+    </select>
+    
+    <select id="minite-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option>59</option>
+    </select>
+    
+    <select id="second-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option>59</option>
+    </select>
+    </div>
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+</body>
+<script>
+    var setClock = document.querySelector('#setClock');
+    var cClock = document.querySelector('#setClock');
+    var result = document.querySelector('#result-wrapper');
+    window.onload = function(){
+       showColck();
+       setInterval('showColck()',1000);               
+       showSubTime(getSelecTime());
+       var timeBar = setInterval('showSubTime(getSelecTime())',1000);
+       cClock.addEventListener('change',function(event){                  
+           showSubTime(getSelecTime());
+           var timeBar = setInterval('showSubTime(getSelecTime())',1000);
+       },false);
+    }; 
+    function getSelecTime(){
+    var yy = document.querySelector('#year-select').value;
+    var mm = document.querySelector('#month-select').value;
+    var dd = document.querySelector('#day-select').value;
+    var hh = document.querySelector('#hour-select').value;
+    var ii = document.querySelector('#minite-select').value;
+    var ss = document.querySelector('#second-select').value;
+    var time = new Date(yy,mm - 1,dd,hh,ii,ss);
+    return time;
+}                  
+    function showSubTime(time){
+        var now = new Date();
+        var ss = getSubDate(time,now);
+        result.innerText = `现在距离${formatTime(time)}${now - time > 0 ? '过去':'还有'}${ss}`; 
+    }
+function showColck(){
+    var cur_time = document.querySelector('#cur-time');
+    var now = new Date();
+    cur_time.innerText = `当前时间：${formatTime(now)}`;            
+}
+function getSubDate(a,b){
+    var c = a - b;
+    var time = Math.abs(c/1000);
+    //获取天数
+    var dd = Math.floor(time/(24*3600));
+    var timeH = time % (24*3600);
+    // 获取小时数
+    var hh = Math.floor(timeH/(3600));
+    var timeM =  timeH % 3600;
+    // 获取分钟数
+    var ii = Math.floor(timeM/(60));
+    //获取秒数            
+    var ss= Math.round(timeM % 60);          
+    return `${dd}天${hh}小时${ii}分${ss < 10 ? '0'+ss : ss}秒`;            
+}
+function formatTime(time){
+    var yy = time.getFullYear();
+    var mm = time.getMonth() + 1;
+    var dd = time.getDate();
+    var hh = time.getHours();
+    var ii = time.getMinutes();
+    var ss = time.getSeconds();
+    var arr = [mm,dd,hh,ii,ss];
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] >= 0 && arr[i] < 10){
+            arr[i] = '0' + arr[i] ;
+        }else{
+            arr[i] = '' + arr[i];
+        }
+    }
+    return `${yy}年${arr[0]}月${arr[1]}日星期${getDay(time)} ${arr[2]}:${arr[3]}:${arr[4]}`;
+}
+function getDay(time){
+    var day = time.getDay();
+    var arr = ['日','一','二','三','四','五','六'];
+    return arr[day];
+} 
+var contacts = [
+    {
+        'firstName' : 'Akira',
+        'lastName' : 'Laine',
+        'number' : '15356000',
+        'likes' : ['a','b','c']
+    },
+    {
+        'firstName' : 'Harry',
+        'lastName' : 'Potter',
+        'number' : '15356000',
+        'likes' : ['d','e','f']
+    },
+    {
+        'firstName' : 'Sherlock',
+        'lastName' : 'Holmes',
+        'number' : '15356000',
+        'likes' : ['g','h','i']
+    },
+    {
+        'firstName' : 'Kristian',
+        'lastName' : 'Vos',
+        'number' : 'unknown',
+        'likes' : ['j','k','c']
+    }
+]; 
+function lookUp(firstName,prop){    
+    for(var i =0;i<contacts.length;i++){        
+        if(contacts[i].firstName == firstName){
+            if(contacts[i][prop]){
+                return contacts[i][prop];
+            }
+            return 'No such property';          
+        }
+    } 
+    return 'No such contact';
+}
+
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+ }
+
+for (let  i = 0; i < 5; i++) {    
+   setTimeout(function() {     
+    console.log(i);
+   }, 1000 * i);
+ }
+
+
+
+console.log(lookUp('Kristian','lastName'));   
+console.log(lookUp('Sherlock','likes')); 
+console.log(lookUp('Harry','likes')); 
+console.log(lookUp('Bob','number')); 
+console.log(lookUp('Akira','address')); 
+</script>
+</html>
