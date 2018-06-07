@@ -5,11 +5,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        html,body,input,div,ul,li{
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        :focus{
+            outline: none;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .wrapper{
+            position: relative;
+        }
+        #email-input{
+            border:2px solid #cecece;
+            width: 165px;
+            height:32px;
+            margin: 20px 30px 0;            
+            padding-left: 15px;
+        }
+        #email-sug-wrapper{
+            display: none;
+            position:absolute;
+            left: 30px;
+            top: 56px;
+            width: 180px;
+            border: 2px solid #cecece;
+            border-top: 0;
+            border-bottom:0;            
+        }
+        #email-sug-wrapper li{
+            height: 32px;
+            line-height: 32px;
+            font-size: 14px;
+            background:#fff;
+            padding-left: 15px;
+            border-bottom: 1px solid #cecece;
+            cursor:pointer;
+        }
+        #email-sug-wrapper li.checked{
+            background:#f6c5cf;
+        }
+        #email-sug-wrapper li:hover{
+            background: #bbe0eb;
+        }
+        #email-sug-wrapper li:last-child{
+            border-bottom: 2px solid #ececec;
+        }
+        #email-sug-wrapper li.checked{
+            background:#f6c5cf;
+        }
+    </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div id="wrapper" class="wrapper">
         <input id="email-input" type="text">
-        <ul id="email-sug-wrapper" class="email-sug"></ul>
+        <ul id="email-sug-wrapper" class="email-sug">            
+        </ul>
     </div>
 </body>
+<script>
+    let postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+    let wrapper = document.querySelector('#wrapper');
+    let emInput = document.querySelector('#email-input');
+    emInput.focus();
+    let iValue = emInput.value;
+
+    let emW = document.querySelector('#email-sug-wrapper');
+
+    let list = emW.getElementsByTagName('li');
+
+    //监听用户输入，显示或隐藏提示列表
+    emInput.addEventListener('keyup',function(ev){
+        let emInput = document.querySelector('#email-input');
+        iValue = emInput.value;
+        if(ev.keyCode == 38){                      
+            moveUp();
+        }
+        else if(ev.keyCode == 40){
+            moveDown();            
+        }else if(ev.keyCode == 13){
+            checkSelected();
+        }else if(ev.keyCode == 27){
+            emInput.select();
+            hideTips();
+        }else{
+            insEmList();
+            isShowTips();
+        } 
+        
+    },false); 
+    
+    //监听用户click事件
+    emW.addEventListener('click',function(ev){
+        let target = ev.target;
+        emInput.value = target.innerHTML; 
+        hideTips();
+        emInput.focus();      
+    },false);
+
+    //格式化用户输入内容
+    function getInputValue(){
+        let inputValue = emInput.value;
+        return diyTrim(inputValue);
+    }
+
+    //生成提示列表
+    function setEMList(){
+        let str = '';
+        let sMail = '';
+        let postList = postfixList;
+        //判断用户是否输入@
+        if(iValue.indexOf('@') > -1 ){
+            //获取@前边的内容            
+            sMail = iValue.split('@')[1];
+            iValue = iValue.split('@')[0];
+            let isMail = postfixList.some(function(item,index,array){
+                return (item.indexOf(sMail) == 0);
+            });
+            if(isMail){
+               postList = postfixList.filter(function(item,index,array){
+                    return (item.indexOf(sMail) == 0);
+                });
+            }            
+        }
+        for(let i =0; i < postList.length; i++){
+            str += '<li>' + iValue +'@'+ postList[i] + '<\/li>';
+        }
+        return str;
+    }
+
+    //将提示列表插入到指定位置
+    function insEmList(){
+        emW.innerHTML = setEMList();
+    }
+    
+    function moveUp(){
+        if(isShowWrap()){
+            let tipList = emW.querySelectorAll('li');
+            let checkedItem = emW.querySelector('#email-sug-wrapper .checked');
+            if(checkedItem){
+                let index = Array.prototype.indexOf.call(tipList,checkedItem);
+                checkedItem.classList.remove('checked');
+                if(index == 0){                    
+                    tipList[tipList.length - 1].classList.add('checked');
+                }else{
+                    tipList[index - 1].classList.add('checked');
+                }
+
+            }else{
+                tipList[tipList.length - 1].classList.add('checked');
+            }
+        }
+    }
+    
+    function checkSelected(){
+        let checkedItem = emW.querySelector('#email-sug-wrapper .checked');
+        if(checkedItem){
+            emInput.value = checkedItem.innerHTML;
+            hideTips();
+            emInput.focus();
+        }
+    }
+
+    function moveDown(){
+        if(isShowWrap()){
+            let tipList = emW.querySelectorAll('li');
+            let checkedItem = emW.querySelector('#email-sug-wrapper .checked');
+            if(checkedItem){
+                let index = Array.prototype.indexOf.call(tipList,checkedItem);
+                checkedItem.classList.remove('checked');
+                if(index == tipList.length - 1){                    
+                    tipList[0].classList.add('checked');
+                }else{
+                    tipList[index + 1].classList.add('checked');
+                }
+
+            }else{
+                tipList[0].classList.add('checked');
+            }
+        }
+    }
+
+    function isShowWrap(){
+        if(emW.style.display == 'block'){
+            return true;
+        }
+        return false;
+    }
+    //判断是否输入内容
+    function isShowTips(){
+        let iValue = emInput.value;
+        if(iValue.match(/^\s*$/)){
+            hideTips();
+        }else{
+            showTips();
+        }
+    }
+
+    function showTips(){
+        emW.style.display = 'block';
+    }
+
+    function hideTips(){
+        emW.style.display = 'none';
+    }
+    //去除字符串两端空格
+    function diyTrim(str) {
+        let result = "";    
+        result = str.replace(/(^\s*)|(\s*$)/g, "");
+        return result
+    }
+</script>
 </html>
