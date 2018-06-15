@@ -113,6 +113,7 @@
     <h2>复选演示</h2>
     <div id="checkbox-wrapper">
             <div id="region-radio-wrapper">
+                    <h3>地区：</h3>
                     <label for="rg-all">全选:</label>
                     <input type="checkbox" value="1" name="region" id="rg-all" checkbox-type="all">
                     <label for="rg-hd">华东:</label>
@@ -123,6 +124,7 @@
                     <input type="checkbox" value="华北" name="region" id="rg-hb">
             </div>
             <div id="product-radio-wrapper">
+                    <h3>商品：</h3>
                     <label for="pr-all">全选:</label>
                     <input type="checkbox" value="1" name="product" id="pr-all" checkbox-type="all">
                     <label for="pr-sj">手机:</label>
@@ -261,9 +263,7 @@
         let productArr = productCheckBox.querySelectorAll('input[name = product]'); 
         checkTips(target);       
         let regionData = getCheckValue(regionArr);        
-        let productData = getCheckValue(productArr); 
-        console.log(regionCheckBox);
-        console.log(productData);       
+        let productData = getCheckValue(productArr);              
         chckwrapper.innerHTML = '';
         renderTable(regionData,productData);       
     },false);   
