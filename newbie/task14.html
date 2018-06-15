@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我是精明的小卖家（一）</title>
+    <style>
+    table {    
+        border-collapse: collapse; /* IE7 and lower */
+        border-spacing: 0;
+        width: 1200px;
+    }
+    .bordered {
+        border: solid #ccc 1px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-box-shadow: 0 1px 1px #ccc; 
+        -moz-box-shadow: 0 1px 1px #ccc; 
+        box-shadow: 0 1px 1px #ccc;         
+    }
+
+    .bordered tr:hover {
+        background: #fbf8e9;
+        -o-transition: all 0.1s ease-in-out;
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -ms-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;     
+    }    
+        
+    .bordered td, .bordered th {
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .bordered th {
+        background-color: #dce9f9;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+        background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+        -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        border-top: none;
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
+
+    .bordered td:first-child, .bordered th:first-child {
+        border-left: none;
+    }
+
+    .bordered th:first-child {
+        -moz-border-radius: 6px 0 0 0;
+        -webkit-border-radius: 6px 0 0 0;
+        border-radius: 6px 0 0 0;
+    }
+
+    .bordered th:last-child {
+        -moz-border-radius: 0 6px 0 0;
+        -webkit-border-radius: 0 6px 0 0;
+        border-radius: 0 6px 0 0;
+    }
+
+    .bordered th:only-child{
+        -moz-border-radius: 6px 6px 0 0;
+        -webkit-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .bordered tr:last-child td:first-child {
+        -moz-border-radius: 0 0 0 6px;
+        -webkit-border-radius: 0 0 0 6px;
+        border-radius: 0 0 0 6px;
+    }
+
+    .bordered tr:last-child td:last-child {
+        -moz-border-radius: 0 0 6px 0;
+        -webkit-border-radius: 0 0 6px 0;
+        border-radius: 0 0 6px 0;
+    }
+    label{     
+        display: inline-block;   
+        margin-left:54px;
+        margin-bottom:10px;
+    }
+    </style>
+</head>
+<body>
+    <h2>单选演示</h2>
+    <select id="region-select">
+        <option value="0" disabled selected>请选择地区</option>
+        <option value="1">全部</option>
+        <option value="华东">华东</option>
+        <option value="华南">华南</option>
+        <option value="华北">华北</option>
+    </select>
+    
+    <select id="product-select">
+        <option value="0" disabled selected>请选择商品</option>
+        <option value="1">全部</option>
+        <option value="手机">手机</option>
+        <option value="笔记本">笔记本</option>
+        <option value="智能音箱">智能音箱</option>
+    </select>
+    <div id="table-wrapper"></div>    
+    <h2>复选演示</h2>
+    <div id="checkbox-wrapper">
+            <div id="region-radio-wrapper">
+                    <label for="rg-all">全选:</label>
+                    <input type="checkbox" value="1" name="region" id="rg-all" checkbox-type="all">
+                    <label for="rg-hd">华东:</label>
+                    <input type="checkbox" checked='checked' value="华东" name="region" id="rg-hd">
+                    <label for="rg-hn">华南:</label>
+                    <input type="checkbox" value="华南" name="region" id="rg-hn">
+                    <label for="rg-hb">华北:</label>
+                    <input type="checkbox" value="华北" name="region" id="rg-hb">
+            </div>
+            <div id="product-radio-wrapper">
+                    <label for="pr-all">全选:</label>
+                    <input type="checkbox" value="1" name="product" id="pr-all" checkbox-type="all">
+                    <label for="pr-sj">手机:</label>
+                    <input type="checkbox" checked='checked' value="手机" name="product" id="pr-sj">
+                    <label for="pr-bjb">笔记本:</label>
+                    <input type="checkbox" value="笔记本" name="product" id="pr-bjb">
+                    <label for="pr-yx">智能音箱:</label>
+                    <input type="checkbox" value="智能音箱" name="product" id="pr-yx">
+            </div>
+    </div>    
+    <div id="check-wrapper"></div>
+</body>
+<script src="./assets/js/task13/data.js"></script>
+<script>
+    let reSelect = document.querySelector('#region-select');
+    let proSelect = document.querySelector('#product-select');
+
+    let tbWrapper = document.querySelector('#table-wrapper');
+    let chckwrapper = document.querySelector('#check-wrapper');
+
+    reSelect.addEventListener('change',function(ev){       
+        tbWrapper.innerHTML = '';
+        renderByRegion();
+        
+    },false);
+
+    proSelect.addEventListener('change',function(ev){
+        tbWrapper.innerHTML = '';
+        renderByRegion();
+        
+    },false);
+
+    function filterByRegion(){
+        let region = document.querySelector('#region-select').value;
+        let product = document.querySelector('#product-select').value;
+
+        if(region != '1'){
+            let regionData = sourceData.filter(function(item,index,arr){
+            return (item.region == region);
+        });
+        if(product != '1'){
+            regionData = regionData.filter(function(item,index,arr){
+                return (item.product == product);
+            });
+        }
+        return regionData;
+        }else{
+            if(product != '1'){
+            let regionData = sourceData.filter(function(item,index,arr){
+            return (item.product == product);
+        });
+            return regionData;
+            }
+        }
+        return sourceData;
+    }
+    
+    function getCheckValue(arr){
+       let checkArr = Array.prototype.filter.call(arr,function(item,index,arr){
+           return (item.checked == true);
+       });
+       let data = [];
+       Array.prototype.forEach.call(checkArr,function(item,index,arr){
+           if(item.value != '1'){
+            return (data.push(item.value));
+           }           
+       });
+       return data;
+    }
+
+    function renderByRegion(){
+        let table = document.createElement('table');
+        table.classList.add('bordered');
+        let tbData = filterByRegion();        
+        let th = '<th>地区<\/th><th>商品<\/th>';
+        for(let i = 0; i < 12 ; i ++){
+            th += `<th>${i + 1}月<\/th>`;
+        }
+        table.createTHead().innerHTML = th;
+        let tbody = table.createTBody();                       
+        for(let i =0;i < tbData.length; i++){
+            let trNode = tbody.insertRow();
+            let trData = [];
+            let newTrData = trData.concat(tbData[i].region,tbData[i].product,tbData[i].sale);                       
+            for(let k =0;k < newTrData.length;k++){
+               let tdNode = trNode.insertCell();
+                tdNode.innerHTML = `${newTrData[k]}`;
+            }
+        }
+        tbWrapper.appendChild(table);
+    }    
+
+    //判断是不是唯一选中
+    function isOnlyChecked(o){
+        let nValue = o.name;
+        let parent = o.parentNode;
+        let arr = parent.querySelectorAll(`input[name = ${nValue}]`);
+        return Array.prototype.every.call(arr,function(item,index,arr){
+            return (item.checked == false);
+        });
+    }
+
+    //选中所有
+    function checkedAll(o){
+        let nValue = o.name;
+        let parent = o.parentNode;
+        let arr = parent.querySelectorAll(`input[name = ${nValue}]`);
+        Array.prototype.forEach.call(arr,function(item,index,arr){
+            if(item.checked == false){
+                item.checked = true ;
+            }
+        });
+    }
+
+    function isAllChecked(o){
+        let nValue = o.name;
+        let parent = o.parentNode;
+        let arr = parent.querySelectorAll(`input[name = ${nValue}]`);        
+        for(let i = 0; i < arr.length ;i++){
+            if(i != 0 && arr[i].checked == false){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //复选案例演示
+
+    let regionCheckBox = document.querySelector('#region-radio-wrapper');
+    let productCheckBox = document.querySelector('#product-radio-wrapper');
+    let checkboxWrap = document.querySelector('#checkbox-wrapper');
+
+    checkboxWrap.addEventListener('change',function(ev){
+        let target = ev.target;
+        let regionArr = regionCheckBox.querySelectorAll('input[name = region]');
+        let productArr = productCheckBox.querySelectorAll('input[name = product]'); 
+        checkTips(target);       
+        let regionData = getCheckValue(regionArr);        
+        let productData = getCheckValue(productArr); 
+        console.log(regionCheckBox);
+        console.log(productData);       
+        chckwrapper.innerHTML = '';
+        renderTable(regionData,productData);       
+    },false);   
+
+    function checkTips(o){
+        if(o.value == '1' && o.checked == true){
+            checkedAll(o); 
+        }
+        else{
+            if(o.value != '1' && o.checked == true && isAllChecked(o)){
+                checkedAll(o);
+            }
+            else if(o.value != '1' && o.checked == false && isOnlyChecked(o)){
+                alert('至少选择一项');
+                o.checked = true;
+            }
+            else{
+                let nValue = o.name;
+                let parent = o.parentNode;
+                let arr = parent.querySelectorAll(`input[name = ${nValue}]`);
+                arr[0].checked = false;
+            }
+        }
+    }
+
+    function filterData(region,product){
+        let data = [];
+        let dataReg = [];
+        // filter data by region
+        for(let i = 0; i < region.length; i++){
+            let dataByRegion = sourceData.filter(function(item){
+                return (item.region == region[i]);
+            });
+            dataReg = dataReg.concat(dataByRegion);            
+        }        
+        for(let k = 0; k < product.length; k++){
+            let dataByPro = dataReg.filter(function(item){
+                return (item.product == product[k]);
+            });           
+            data = data.concat(dataByPro);
+        }
+         
+        return data;
+    }
+
+   function renderTable(region,product){
+        let table = document.createElement('table');
+        table.classList.add('bordered');
+        let tbData = filterData(region,product);         
+        if(region.length == 1 && product.length > 1){
+          let th = '<th>地区<\/th><th>商品<\/th>';
+        for(let i = 0; i < 12 ; i ++){
+            th += `<th>${i + 1}月<\/th>`;
+        }        
+        table.createTHead().innerHTML = th;
+        let tbody = table.createTBody();                           
+        for(let i =0;i < tbData.length; i++){
+            let trNode = tbody.insertRow();            
+            let trData = [];
+            let newTrData = trData.concat(tbData[i].region,tbData[i].product,tbData[i].sale);                       
+            for(let k = 0 ;k < newTrData.length;k++){                
+                if(k == 0 && i != 0){
+                    continue;  
+                } else{                    
+                    let tdNode = trNode.insertCell();
+                    tdNode.innerHTML = `${newTrData[k]}`; 
+                    if(k == 0 && i == 0){
+                        tdNode.rowSpan = product.length;
+                    }
+                } 
+            }           
+        }
+        } else{
+            let th = '<th>商品<\/th><th>地区<\/th>';
+        for(let i = 0; i < 12 ; i ++){
+            th += `<th>${i + 1}月<\/th>`;
+        }        
+        table.createTHead().innerHTML = th;
+        let tbody = table.createTBody();                             
+        for(let i =0;i < tbData.length; i++){
+            let trNode = tbody.insertRow();            
+            let trData = [];
+            let newTrData = trData.concat(tbData[i].product,tbData[i].region,tbData[i].sale);                       
+            for(let k = 0 ;k < newTrData.length;k++){                
+                if(k == 0 && i % region.length != 0){
+                    continue;  
+                } else{
+                    let tdNode = trNode.insertCell();                    
+                    tdNode.innerHTML = `${newTrData[k]}`;
+                    if(k == 0 && i % region.length == 0){
+                        tdNode.rowSpan = region.length;
+                    }                   
+                } 
+            }           
+        }
+        }               
+        chckwrapper.appendChild(table);
+   }
+   renderTable(['华东'],['手机']);
+</script>
+</html>
